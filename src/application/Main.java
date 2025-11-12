@@ -1,26 +1,47 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+
+//Other Java imports
+import java.util.ArrayList;
+import java.nio.file.Paths;
 
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
-		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+	public void start(Stage mainStage) {
+		// Get fonts
+		Font.loadFont(getClass().getResource("/fonts/dotemp-8bit.otf").toExternalForm(), 10);
+
+		// Get screen size
+		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+		double width = screenBounds.getWidth();
+		double height = screenBounds.getHeight();
+		
+		mainStage.setX(screenBounds.getMinX());
+		mainStage.setY(screenBounds.getMinY());
+		mainStage.setWidth(width);
+		mainStage.setHeight(height);
+		
+		// Get accounts
+		AccountLoader accload = new AccountLoader();
+		ArrayList<Account> accounts = accload.getAccounts(Paths.get("accounts_data/accounts.csv"));
+		
+		// Show login scene
+		mainStage.setScene(Login.welcomeShow(width, height, mainStage, accounts));
+		mainStage.setTitle("APP NAME PLACEHOLDER");
+		mainStage.show();
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
 }
+
+// Import Google Font to CSS: https://www.w3docs.com/snippets/css/how-to-import-google-fonts-in-css-file.html
