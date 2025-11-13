@@ -77,6 +77,38 @@
   	-fx-font-size: 17px;
 }
 
+.combo-box {
+	-fx-background-image: url("file:assets/signin_placeholder_icon.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 15 50%;
+    -fx-background-size: 30px 30px;
+    -fx-padding: 0 0 0 60;
+    -fx-pref-height: 50px;
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-effect: none; 
+    -fx-font-family: "Helvetica"; 
+    -fx-font-size: 14px; 
+    -fx-prompt-text-fill: #cccccc;
+}
+
+.create-button{
+	-fx-pref-width: 100px;
+    -fx-pref-height: 50px;
+    -fx-background-color: #a6be5d;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-font-family: "Dotemp 8bit";
+    -fx-font-size: 12px; 
+}
+
+.create-button:hover{
+    -fx-background-color: #E5E8C9;
+}
+
 .success-style{
 	-fx-pref-width: 400px;
     -fx-pref-height: 200px;
