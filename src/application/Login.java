@@ -113,6 +113,7 @@ public class Login {
  				if(!found) {
 // 					NotAuthenticated err = new NotAuthenticated();
 // 					err.start(logStage);
+					new Alert(Alert.AlertType.ERROR,"Account not found or Password Incorect").show();
  				}
  			}
  		});
@@ -125,6 +126,11 @@ public class Login {
         clickable.getStyleClass().add("clickable-style");
         TextFlow flow = new TextFlow(normal, clickable);
         flow.getStyleClass().add("textflow-custom");
+
+		// Directs the user to Create an Account Screen
+        clickable.setOnAction(e -> {
+        		mainStage.setScene(CreateAccount.createAccount(width, height, mainStage));
+        		});
         
         VBox bottomE = new VBox(7,log,flow);
         VBox.setMargin(bottomE, new Insets(10, 0, 0, 0));
@@ -232,4 +238,5 @@ public class Login {
 // TextFlow: https://stackoverflow.com/questions/20984209/javafx-how-to-make-a-clickable-text
 // Remove focus from textfields: https://stackoverflow.com/questions/29051225/remove-default-focus-from-textfield-javafx
 // Fade Transition: https://genuinecoder.com/javafx-splash-screen-loading-screen/
+
 // Reference for end of animation: https://www.tutorialspoint.com/javafx/javafx_sequential_transition.htm
