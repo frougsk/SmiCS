@@ -21,12 +21,12 @@ import javafx.util.Duration;
 public class Smi_Dashboard {
 	public static Scene createDash(double width, double height, Stage mainStage, Account account) {
 		// =========== TOP BAR ===========
-		ImageView brand = new ImageView(new Image("file:assets/smiCS_8bit.png"));
+		ImageView brand = new ImageView(new Image("/assets/brand.png"));
 		double ogWidth = brand.getImage().getWidth();
 		brand.setPreserveRatio(true); brand.setFitWidth(ogWidth * 0.05);
 		
 		// Make menu button
-		ImageView borgir = new ImageView(new Image("file:assets/menubutton.png"));
+		ImageView borgir = new ImageView(new Image("/assets/menubutton.png"));
 		borgir.setPreserveRatio(true); borgir.setFitWidth(ogWidth * 0.02);
 		Button menuButton = new Button();
 		menuButton.setGraphic(borgir);
@@ -81,3 +81,4 @@ public class Smi_Dashboard {
         return scene;
     }
 }
+
