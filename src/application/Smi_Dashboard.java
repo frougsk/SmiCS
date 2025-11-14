@@ -23,11 +23,11 @@ public class Smi_Dashboard {
 		// =========== TOP BAR ===========
 		ImageView brand = new ImageView(new Image("/assets/brand.png"));
 		double ogWidth = brand.getImage().getWidth();
-		brand.setPreserveRatio(true); brand.setFitWidth(ogWidth * 0.05);
+		brand.setPreserveRatio(true); brand.setFitWidth(ogWidth * 0.04);
 		
 		// Make menu button
 		ImageView borgir = new ImageView(new Image("/assets/menubutton.png"));
-		borgir.setPreserveRatio(true); borgir.setFitWidth(ogWidth * 0.02);
+		borgir.setPreserveRatio(true); borgir.setFitWidth(ogWidth * 0.01);
 		Button menuButton = new Button();
 		menuButton.setGraphic(borgir);
 		menuButton.setStyle("-fx-background-color: transparent;");
@@ -81,4 +81,5 @@ public class Smi_Dashboard {
         return scene;
     }
 }
+
 
