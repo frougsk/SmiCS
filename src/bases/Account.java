@@ -1,4 +1,4 @@
-package application;
+package bases;
 
 public class Account {
 	// Attributes
@@ -34,4 +34,5 @@ public class Account {
 	}
 	
 }
+
 
