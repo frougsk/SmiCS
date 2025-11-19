@@ -1,5 +1,10 @@
 package application;
 
+// Package imports
+import bases.Account;
+
+// JavaFX imports
+import javafx.util.Duration;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -16,14 +21,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+
 //Java Imports
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import javafx.util.Duration;
-
 
 public class CreateAccount {
 	
@@ -191,4 +195,5 @@ public class CreateAccount {
 	}
 
 }
+
 
