@@ -7,6 +7,12 @@ public class Course {
 	private final int units;
 	private final String description;
 	private final String studentType;
+
+	// Constants
+	public static final String BSCS = "Bachelor";
+	public static final String MASTER = "Master";
+	public static final String PHD = "PhD";
+	public static final String MIT = "Master in IT";
 	
 	// Constructor
 	public Course(String code, String name, int units, String description, String type) {
