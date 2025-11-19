@@ -16,7 +16,7 @@ public class AccountLoader {
 		
 		try(BufferedReader br = Files.newBufferedReader(path)){
 			String line;
-			line = br.readLine();	// Skip header
+			br.readLine();	// Skip header
 			
 			while((line = br.readLine()) != null) {
 				String[] accDetails = line.split(",");
@@ -42,5 +42,6 @@ public class AccountLoader {
 	}
 		
 }
+
 
 
