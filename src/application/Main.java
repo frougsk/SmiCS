@@ -1,5 +1,10 @@
 package application;
 	
+// Import Packages
+import bases.*;
+import fileHandlers.*;
+
+// Import JavaFX
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -8,10 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
-//Other Java imports
+// Other Java imports
 import java.util.ArrayList;
 import java.nio.file.Paths;
-
 
 public class Main extends Application {
 	@Override
@@ -45,3 +49,4 @@ public class Main extends Application {
 }
 
 // Import Google Font to CSS: https://www.w3docs.com/snippets/css/how-to-import-google-fonts-in-css-file.html
+
