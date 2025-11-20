@@ -138,3 +138,16 @@
 	-fx-pref-width: 140px; 
 	-fx-max-height: infinity;
 }
+
+.hello-style{
+	-fx-font-size: 24px;
+	-fx-font-family: "Dotempt Demo";
+	-fx-font-weight: bold;
+	-fx-text-alignment: justify;
+}
+
+.paragraph-style{
+	-fx-font-size: 16px;
+	-fx-font-family: "Crimson Text" ;
+	-fx-text-alignment: justify 
+}
