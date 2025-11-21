@@ -22,6 +22,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.net.URL;
 // Java Imports
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -32,13 +33,14 @@ public class CourseView {
 		
 	
 	public static Scene viewCourse(double width, double height, Stage mainStage, Account account) {
+		System.out.println("Entered CourseView.viewCourse()");
 		// =========== TOP BAR ===========
 		ImageView brand = new ImageView(Login.class.getResource("/assets/brand.png").toExternalForm());
 		double ogWidth = brand.getImage().getWidth();
 		brand.setPreserveRatio(true); brand.setFitWidth(ogWidth * 0.05);
 		
 		// Make menu button
-		ImageView borgir = new ImageView(new Image("file:assets/menubutton.png"));
+		ImageView borgir = new ImageView(Login.class.getResource("/assets/menubutton.png").toExternalForm());
 		borgir.setPreserveRatio(true); borgir.setFitWidth(ogWidth * 0.02);
 		Button menuButton = new Button();
 		menuButton.setGraphic(borgir);
@@ -85,17 +87,16 @@ public class CourseView {
      	});
 		
 		//=========== LOAD COURSES  ===========
-		
 		CourseLoader loader = new CourseLoader();
 		ArrayList<Course> bs = loader.getBS();
 		ArrayList<Course> master = loader.getMasters();
-		ArrayList<Course> phd = loader.getPHD();
+//		ArrayList<Course> phd = loader.getPHD();
 		ArrayList<Course> mit = loader.getMITS();
 		
 		ObservableList<Course> allCourse = FXCollections.observableArrayList();
 		allCourse.addAll(bs);
 		allCourse.addAll(master);
-		allCourse.addAll(phd);
+//		allCourse.addAll(phd);
 		allCourse.addAll(mit);
 		
 		FilteredList<Course> searchList = new FilteredList<>(allCourse);
@@ -114,10 +115,19 @@ public class CourseView {
         TableColumn<Course, String> colType   = new TableColumn<>("Degree Program");
         
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colCode.setMinWidth(50); colCode.setMaxWidth(50);
+        
         colTitle.setCellValueFactory(new PropertyValueFactory<>("CName"));
+        colTitle.setMinWidth(100); colTitle.setMaxWidth(100);
+        
         colUnit.setCellValueFactory(new PropertyValueFactory<>("units"));
+        colUnit.setMinWidth(30); colUnit.setMaxWidth(30);
+        
         colDescrip.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        colDescrip.setMinWidth(150); colDescrip.setMaxWidth(150);
+        
         colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colType.setMinWidth(30); colType.setMaxWidth(30);
         
         table.getColumns().addAll(colCode, colTitle, colUnit, colDescrip, colType);
        
