@@ -28,7 +28,7 @@ import javafx.util.Duration;
 public class Smi_Dashboard {
 	public static Scene createDash(double width, double height, Stage mainStage, Account account) {
 		// =========== TOP BAR ===========
-		ImageView brand = new ImageView(new Image("file:brand.png"));
+		ImageView brand = new ImageView(Login.class.getResource("/assets/brand.png").toExternalForm());
 		double ogWidth = brand.getImage().getWidth();
 		brand.setPreserveRatio(true); brand.setFitWidth(ogWidth * 0.05);
 		
@@ -54,10 +54,11 @@ public class Smi_Dashboard {
 		Button dash = new Button("DASHBOARD");
 		Button planner = new Button("PLANNER");
 		Button course = new Button("COURSES");
-
-		course.setOnAction(e -> {
-    		mainStage.setScene(CourseView.viewCourse(width, height, mainStage, account));
-    		});
+		
+			course.setOnAction(e -> {
+				System.out.println("Courses button clicked!");
+	    		mainStage.setScene(CourseView.viewCourse(width, height, mainStage, account));
+	    		});
 
 		dash.getStyleClass().add("sidebutton");
 		planner.getStyleClass().add("sidebutton");
@@ -68,7 +69,7 @@ public class Smi_Dashboard {
 		
 		// =========== INTRODUCTION ===========
 		Text hello = new Text("Hello, " + account.getFirstName().toUpperCase() + 
-				" " + account.getLastName().toUpperCase());
+				" " + account.getLastName().toUpperCase() + "!");
 		hello.getStyleClass().add("hello-style");
 		
 		Text introText = new Text("Welcome to SMICS Course Planning Portal, your glowing registration assistant! "); 
@@ -99,7 +100,7 @@ public class Smi_Dashboard {
 		
 		// Paragraph 1
 		Text abText1 = new Text("SMICS is designed to make your course planning simple, convenient, and " + 
-				"easy. SMICS have three (3) tabs — Dashboard, Planner, and Courses. In this section, you will" + 
+				"easy. SMICS have three (3) tabs — Dashboard, Planner, and Courses. In this section, you will " + 
 				"learn the function of each tab to guide you for a better navigating experience in this portal. ");
 		
 		TextFlow aboutPara1 = new TextFlow(abText1);
@@ -109,7 +110,7 @@ public class Smi_Dashboard {
 		
 		// Paragraph 2
 		Text abText2 = new Text("The Dashboard Tab is where you are right now. It contains the the guide on how " + 
-				"you can navigate this Portal. It provides detailed information on each tab that you can you will " + 
+				"you can navigate this Portal. It provides detailed information on each tab that you will " + 
 				"encounter. Furthermore, in the Credits Section, you will find the information about the creators " + 
 				"and developers of this Portal. It also contains the references used, such as images or other " + 
 				"obtained from the web");
@@ -160,11 +161,8 @@ public class Smi_Dashboard {
 		// Paragraph 1 - cred
 		Text credText1 = new Text("This Portal is created by the group JELlyAce, students of the CMSC 22 " + 
 				"UV-5L of the University of the Philippines Los Baños (UPLB). They are Jodi Antonette Calleja, " + 
-				"Maria Eliza Gevaña, and Lian Francine Hidalgo." + 
-				"nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. " + 
-				"Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia " +
-				"nostra inceptos himenaeos.");
-		
+				"Maria Eliza Gevaña, and Lian Francine Hidalgo." ); 
+						
 		TextFlow credPara1 = new TextFlow(credText1);
 		credPara1.setPadding(new Insets(20, 20, 5, 20));
 		credPara1.setMaxWidth(width);
@@ -236,4 +234,3 @@ public class Smi_Dashboard {
         return scene;
     }
 }
-
