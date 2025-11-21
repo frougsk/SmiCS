@@ -55,6 +55,10 @@ public class Smi_Dashboard {
 		Button planner = new Button("PLANNER");
 		Button course = new Button("COURSES");
 
+		course.setOnAction(e -> {
+    		mainStage.setScene(CourseView.viewCourse(width, height, mainStage, account));
+    		});
+
 		dash.getStyleClass().add("sidebutton");
 		planner.getStyleClass().add("sidebutton");
 		course.getStyleClass().add("sidebutton");
@@ -232,3 +236,4 @@ public class Smi_Dashboard {
         return scene;
     }
 }
+
