@@ -33,7 +33,7 @@ public class Smi_Dashboard {
 		brand.setPreserveRatio(true); brand.setFitWidth(ogWidth * 0.05);
 		
 		// Make menu button
-		ImageView borgir = new ImageView(new Image("/assets/menubutton.png"));
+		ImageView borgir = new ImageView(Login.class.getResource("/assets/menubutton.png").toExternalForm());
 		borgir.setPreserveRatio(true); borgir.setFitWidth(ogWidth * 0.02);
 		Button menuButton = new Button();
 		menuButton.setGraphic(borgir);
@@ -54,11 +54,10 @@ public class Smi_Dashboard {
 		Button dash = new Button("DASHBOARD");
 		Button planner = new Button("PLANNER");
 		Button course = new Button("COURSES");
-		
-			course.setOnAction(e -> {
-				System.out.println("Courses button clicked!");
-	    		mainStage.setScene(CourseView.viewCourse(width, height, mainStage, account));
-	    		});
+
+		course.setOnAction(e -> {
+    		mainStage.setScene(CourseView.viewCourse(width, height, mainStage, account));
+    		});
 
 		dash.getStyleClass().add("sidebutton");
 		planner.getStyleClass().add("sidebutton");
@@ -69,10 +68,15 @@ public class Smi_Dashboard {
 		
 		// =========== INTRODUCTION ===========
 		Text hello = new Text("Hello, " + account.getFirstName().toUpperCase() + 
-				" " + account.getLastName().toUpperCase() + "!");
+				" " + account.getLastName().toUpperCase());
 		hello.getStyleClass().add("hello-style");
 		
-		Text introText = new Text("Welcome to SMICS Course Planning Portal, your glowing registration assistant! "); 
+		Text introText = new Text("Welcome to the Scheduling & Management for the Institute of Computer Science!\r\n"
+				+ "This application helps you plan your classes for the First Semester of A.Y. 2025–2026 in an easy and organized way.\r\n"
+				+ "\r\n"
+				+ "On this platform, you can create an account, log in, view your weekly calendar, and manage the courses allowed in your degree program. "
+				+ "You can add, edit, or delete courses, and the schedule will highlight the time slots for you. "
+				+ "The system also shows details about each course to help you decide better. "); 
 				/**+ "faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis " + 
 				"convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus " + 
 				"nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. " + 
@@ -100,7 +104,7 @@ public class Smi_Dashboard {
 		
 		// Paragraph 1
 		Text abText1 = new Text("SMICS is designed to make your course planning simple, convenient, and " + 
-				"easy. SMICS have three (3) tabs — Dashboard, Planner, and Courses. In this section, you will " + 
+				"easy. SMICS have three (3) tabs — Dashboard, Planner, and Courses. In this section, you will" + 
 				"learn the function of each tab to guide you for a better navigating experience in this portal. ");
 		
 		TextFlow aboutPara1 = new TextFlow(abText1);
@@ -110,7 +114,7 @@ public class Smi_Dashboard {
 		
 		// Paragraph 2
 		Text abText2 = new Text("The Dashboard Tab is where you are right now. It contains the the guide on how " + 
-				"you can navigate this Portal. It provides detailed information on each tab that you will " + 
+				"you can navigate this Portal. It provides detailed information on each tab that you can you will " + 
 				"encounter. Furthermore, in the Credits Section, you will find the information about the creators " + 
 				"and developers of this Portal. It also contains the references used, such as images or other " + 
 				"obtained from the web");
@@ -161,8 +165,11 @@ public class Smi_Dashboard {
 		// Paragraph 1 - cred
 		Text credText1 = new Text("This Portal is created by the group JELlyAce, students of the CMSC 22 " + 
 				"UV-5L of the University of the Philippines Los Baños (UPLB). They are Jodi Antonette Calleja, " + 
-				"Maria Eliza Gevaña, and Lian Francine Hidalgo." ); 
-						
+				"Maria Eliza Gevaña, and Lian Francine Hidalgo." + 
+				"nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. " + 
+				"Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia " +
+				"nostra inceptos himenaeos.");
+		
 		TextFlow credPara1 = new TextFlow(credText1);
 		credPara1.setPadding(new Insets(20, 20, 5, 20));
 		credPara1.setMaxWidth(width);
@@ -234,5 +241,3 @@ public class Smi_Dashboard {
         return scene;
     }
 }
-
-

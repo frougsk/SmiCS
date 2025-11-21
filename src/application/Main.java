@@ -10,6 +10,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
@@ -22,6 +23,15 @@ public class Main extends Application {
 	public void start(Stage mainStage) {
 		// Get fonts
 		Font.loadFont(getClass().getResource("/fonts/dotemp-8bit.otf").toExternalForm(), 10);
+		Font.loadFont(getClass().getResource("/fonts/CrimsonPro-VariableFont_wght.ttf").toExternalForm(), 10);
+		
+		// App logo
+		try {
+        	Image icon = new Image(getClass().getResource("/assets/icon.png").toExternalForm());
+        	mainStage.getIcons().add(icon);
+        } catch (Exception e) {
+            System.out.println("Icon not found");
+        }
 
 		// Get screen size
 		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
@@ -39,7 +49,7 @@ public class Main extends Application {
 		
 		// Show login scene
 		mainStage.setScene(Login.welcomeShow(width, height, mainStage, accounts));
-		mainStage.setTitle("APP NAME PLACEHOLDER");
+		mainStage.setTitle("smiCS");
 		mainStage.show();
 	}
 	
@@ -49,4 +59,3 @@ public class Main extends Application {
 }
 
 // Import Google Font to CSS: https://www.w3docs.com/snippets/css/how-to-import-google-fonts-in-css-file.html
-

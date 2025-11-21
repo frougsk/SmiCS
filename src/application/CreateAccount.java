@@ -36,16 +36,16 @@ public class CreateAccount {
 
 	public static Scene createAccount(double width, double height, Stage mainStage) {	
 		// =========== CREATE ACCOUNT BOX  ===========
-		ImageView sign = new ImageView(new Image("file:assets/signin_placeholder_icon.png"));
-		double ogWidth = sign.getImage().getWidth();
-		sign.setPreserveRatio(true); sign.setFitWidth(ogWidth * 0.03);
+		ImageView sign = new ImageView(Login.class.getResource("/assets/icon.png").toExternalForm());
+		sign.setPreserveRatio(true);
+		sign.setFitWidth(100);
 		
 		Text newAccount = new Text("Create an Account");
 		newAccount.getStyleClass().add("login-font");
 		newAccount.setFill(Color.web("#a6be5d"));
 		
 		Region spacer = new Region();
-		spacer.setPrefHeight(20);
+		spacer.setPrefHeight(0);
 		
 		TextField email = new TextField();
 		email.setPromptText("Email Address");
@@ -64,7 +64,7 @@ public class CreateAccount {
 		lastName.getStyleClass().add("login-textfields");
 		
 		ComboBox<String> degree = new ComboBox<>();
-		degree.getItems().addAll("BSCS","MSCS","PhD CS", "MIT");
+		degree.getItems().addAll("Bachelor of Science in Computer Science","Master of Science in Computer Science","Doctor of Philosophy in Computer Science", "Master of Information Technology");
 		degree.setPromptText("Degree Program");
 		degree.setMaxWidth(Double.MAX_VALUE);
 		degree.getStyleClass().add("combo-box");
@@ -113,14 +113,17 @@ public class CreateAccount {
             confirmPw.setManaged(!show);
         });
         
-        VBox passBox = new VBox(8, passwordStack, confirmStack, showPassword);	
+        VBox passBox = new VBox(15, passwordStack, confirmStack, showPassword);	
         
 		// =========== BUTTONS  ===========
 		Button back = new Button("Back");
+		back.getStyleClass().add("create-button");
+		back.setStyle("-fx-cursor: hand;");
 		
 		Button create = new Button("Create");
 		create.getStyleClass().add("create-button");
-		//create.setPrefSize(50, 30);
+		create.setStyle("-fx-cursor: hand;");
+		create.setPrefSize(50, 30);
 		
 		HBox buttons = new HBox(100, back, create);
 		buttons.setAlignment(Pos.BASELINE_CENTER);
@@ -129,6 +132,13 @@ public class CreateAccount {
 		back.setOnMouseClicked(e -> mainStage.setScene(Login.welcomeShow(width, height, mainStage, new java.util.ArrayList<>())));
 		
 		// Hover Effect
+		back.setOnMouseEntered(e -> {
+			back.setTextFill(Color.web("#A6BE5D"));
+        	}); 
+        back.setOnMouseExited(e -> {
+        	back.setTextFill(Color.web("#FFFFFF"));
+        	});
+        
 		create.setOnMouseEntered(e -> {
 			create.setTextFill(Color.web("#A6BE5D"));
         	}); 
@@ -162,21 +172,23 @@ public class CreateAccount {
 		fmName.setMaxWidth(Double.MAX_VALUE);
 		HBox.setHgrow(firstName, Priority.ALWAYS);
 		HBox.setHgrow(middleName, Priority.ALWAYS);
-		
+
+		VBox createAndTitle = new VBox(10, sign, newAccount); // 5px spacing between image and title
+		createAndTitle.setAlignment(Pos.CENTER);
+
 		VBox signup = new VBox(15);
-		signup.setPadding(new Insets(50,30,0,30));
-		
+		signup.setPadding(new Insets(50,30,50,30));
 		signup.setAlignment(Pos.CENTER);
 		signup.getStyleClass().add("login-box");
-		signup.getChildren().addAll(sign, newAccount, email, fmName,
-				lastName, degree, password, confirmPw, passBox, buttons);
-			
-        StackPane root = new StackPane(signup);
-        root.setPadding(new Insets(30, 450, 20, 450));
+		signup.getChildren().addAll(createAndTitle, spacer, email, fmName,
+		        lastName, degree, passBox, buttons);
+		        
+		StackPane root = new StackPane(signup);
+		root.setPadding(new Insets(30, 450, 30, 450));
 		root.setPrefSize(width, height);
 		root.setMinSize(width, height);
 		root.setMaxSize(width, height);
-        root.getStyleClass().add("welcome-bg");
+		root.getStyleClass().add("welcome-bg");
                      
 		Scene scene = new Scene(root, width, height);
         scene.getStylesheets().add(Login.class.getResource("application.css").toExternalForm());
@@ -195,5 +207,3 @@ public class CreateAccount {
 	}
 
 }
-
-

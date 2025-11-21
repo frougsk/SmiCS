@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 public class Login {
 	public static Scene welcomeShow(double width, double height, Stage mainStage, ArrayList<Account> accounts) {
+		
 		// =========== TOP BAR ===========
 		ImageView brand = new ImageView(Login.class.getResource("/assets/brand.png").toExternalForm());
 		double ogWidth = brand.getImage().getWidth();
@@ -39,8 +40,19 @@ public class Login {
 		topBar.setStyle("-fx-background-color: #eaefdb;");
 		
 		// =========== LOGIN BOX ===========
-		Text login = new Text("Sign In");
-		login.getStyleClass().add("login-font");
+		ImageView smiski = new ImageView(Login.class.getResource("/assets/icon.png").toExternalForm());
+		smiski.setPreserveRatio(true); 
+		smiski.setFitWidth(80);
+		
+		javafx.scene.effect.DropShadow dropShadow = new javafx.scene.effect.DropShadow();
+		dropShadow.setColor(Color.rgb(0, 0, 0, 0.3));
+		dropShadow.setRadius(10);
+		dropShadow.setOffsetX(3); 
+		dropShadow.setOffsetY(3);
+		smiski.setEffect(dropShadow);
+		
+		Text login = new Text("Log In");
+		login.setFont(Fonts.loadDotemp(55));
 		login.setFill(Color.web("#a6be5d"));
         
 		Region spacer = new Region();
@@ -75,7 +87,7 @@ public class Login {
         // Password VBox
         VBox passbox = new VBox(8,passwordStack,showPassword);
         
-        // =========== SIGN IN FEATURES ===========
+        // =========== LOG IN FEATURES ===========
         Image unhover = new Image(Login.class.getResource("/assets/Unhovered_sign.png").toExternalForm());
         Image hover = new Image(Login.class.getResource("/assets/Hovered_sign.png").toExternalForm());
         
@@ -83,9 +95,9 @@ public class Login {
         buttonIcon.setFitWidth(50); 
 		buttonIcon.setFitHeight(50);
         
-        Button log = new Button("Sign In",buttonIcon);
+        Button log = new Button("Log In",buttonIcon);
         log.setTextFill(Color.web("#FFFFFF"));
-		log.setStyle("-fx-cursor: hand; -fx-padding:0;")
+		log.setStyle("-fx-cursor: hand; -fx-padding:0;");
         log.setContentDisplay(ContentDisplay.RIGHT);
 
 		 // Hover effect
@@ -137,8 +149,11 @@ public class Login {
         
         VBox bottomE = new VBox(7,log,flow);
         VBox.setMargin(bottomE, new Insets(10, 0, 0, 0));
+        
+        VBox smiskiAndTitle = new VBox(0, smiski, login);
+        smiskiAndTitle.setAlignment(Pos.CENTER);
 		
-		VBox signin = new VBox(20,login,spacer,email,passbox,bottomE);
+		VBox signin = new VBox(5, smiskiAndTitle,spacer,email,passbox,bottomE);
 		signin.setTranslateX(150);
 		signin.setAlignment(Pos.TOP_CENTER);
 		signin.setPadding(new Insets(50,40,0,40));
@@ -181,6 +196,7 @@ public class Login {
 		Scene scene = new Scene(root, width, height);
         scene.getStylesheets().add(Login.class.getResource("application.css").toExternalForm());
         Platform.runLater(() -> root.requestFocus());
+        
 		return scene;
 	}
 	
@@ -243,4 +259,3 @@ public class Login {
 // Fade Transition: https://genuinecoder.com/javafx-splash-screen-loading-screen/
 
 // Reference for end of animation: https://www.tutorialspoint.com/javafx/javafx_sequential_transition.htm
-
