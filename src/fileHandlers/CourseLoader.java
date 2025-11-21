@@ -17,7 +17,7 @@ public class CourseLoader {
 	
 	// Getters
 	public ArrayList<Course> getBS() { return bs; }
-	public ArrayList<Course> getMasers() { return master; }
+	public ArrayList<Course> getMasters() { return master; }
 	public ArrayList<Course> getPHD() { return phd; }
 	public ArrayList<Course> getMITS() { return mit; }
 	
